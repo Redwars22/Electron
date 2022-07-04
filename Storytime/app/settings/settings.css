@@ -1,0 +1,37 @@
+body {
+    padding: 20px;
+    background-color: #001d25 !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+* {
+    color: #03c8fc;
+}
+
+.bi {
+    color: white;
+}
+
+.go-back-button {
+    max-height: 30px;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.header-title-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.title {
+    display: flex;
+    gap: 10px;
+}
+
+h1 {
+    font-size: 25px !important;
+}

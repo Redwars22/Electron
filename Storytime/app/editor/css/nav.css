@@ -1,0 +1,7 @@
+nav {
+	display: flex;
+	flex-direction: row;
+    justify-content: space-between;
+    font-family: 'PT Sans Narrow', sans-serif;
+    padding-top: 10px;
+}
