@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/editor.css">
     <link rel="stylesheet" href="css/properties.css">
+    <link rel="stylesheet" href="css/components.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -41,7 +42,7 @@
         </div>
         <div class="button-group">
             <div class="button-container">
-                <button class="menu-button" onclick="swal.fire({title: 'Não implementado', icon: 'error'})">
+                <button class="menu-button" onclick="handleNarration()">
                     <i class="bi bi-chat-square-text"></i>
                 </button>
                 <p>Narração</p>
@@ -53,7 +54,7 @@
                 <p>Diálogo</p>
             </div>
             <div class="button-container">
-                <button class="menu-button" onclick="swal.fire({title: 'Não implementado', icon: 'error'})">
+                <button class="menu-button" onclick="handleScene()">
                     <i class="bi bi-image-alt"></i>
                 </button>
                 <p>Cena</p>
@@ -71,7 +72,7 @@
                 <p>Tempo</p>
             </div>
             <div class="button-container">
-                <button class="menu-button" onclick="swal.fire({title: 'Não implementado', icon: 'error'})">
+                <button class="menu-button" onclick="handleComment()">
                     <i class="bi bi-chat-left-text"></i>
                 </button>
                 <p>Comentário</p>
@@ -122,18 +123,23 @@
             </fieldset>
             <fieldset>
                 <legend>Estilo da fonte</legend>
-                <input class="form-control" type="text" name="" id="">
-                <button class="btn btn-success">APLICAR</button>
+                <div class="input-container">
+                    <input class="form-control" type="text" name="" id="">
+                    <button class="btn btn-success">APLICAR</button>
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Título do documento</legend>
-                <input class="form-control" type="text" name="" id="">
-                <button class="btn btn-success">APLICAR</button>
+                <div class="input-container">
+                    <input class="form-control" type="text" name="" id="">
+                    <button class="btn btn-success">APLICAR</button>
+                </div>
             </fieldset>
         </div>
     </div>
     <script src="js/editor.js"></script>
     <script src="js/navigate.js"></script>
     <script src="js/getSettings.js"></script>
+    <script src="js/components.js"></script>
 </body>
 </html>

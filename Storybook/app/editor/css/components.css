@@ -1,0 +1,24 @@
+.narration-container {
+    border: 2px dashed rgba(0, 0, 0, 0.219);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    margin: 10px;
+}
+  
+.comment-container {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin: 15px;
+    margin-left: 30px;
+}
+
+.scene-container {
+    border-top: 2px dashed rgba(0, 0, 0, 0.219);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
