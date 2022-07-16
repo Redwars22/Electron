@@ -1,5 +1,16 @@
 .brainstorm-editor {
-    background-color: lightgray;
-    min-width: 250px;
-    min-height: 250px;
+    min-height: 76vh;
+    max-width: 96vw;
+    margin: 25px;
+}
+
+.header-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+}
+
+.title {
+    display: flex;
+    gap: 20px;
 }
