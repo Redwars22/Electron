@@ -45,3 +45,7 @@ body {
 	border-radius: 100%;
   }
   
+  .logo-image {
+	width: 100px;
+	height: 100px;
+  }
