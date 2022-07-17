@@ -1,18 +1,15 @@
 class Component {
 
-    getNarrationComponent() {
-        return "</br><div class='narration-container'>" +
-            "<p>📣️ <em>Lorem ipsum dolor sit amet</em></p></div></br>"
+    getNarrationComponent(text) {
+        return `</br><div class='narration-container'><p>📣️ <em>${text}</em></p></div></br>`
     }
 
-    getCommentsComponent() {
-        return "<div class='comment-container'>" +
-            "<p>(<em>Isto é um comentário!</em>)</p></div></br>"
+    getCommentsComponent(comment) {
+        return `<div class='comment-container'><p>(<em>${comment}</em>)</p></div></br>`
     }
 
-    getSceneComponent() {
-        return "<div class='scene-container'>" +
-            "<p>🎬 CENA 1 - TÍTULO</p></div></br>"
+    getSceneComponent(number, title) {
+        return `<div class='scene-container'><p>🎬 CENA ${number} - ${title}</p></div></br>`
     }
 
     getEffectsComponent() {
@@ -29,42 +26,91 @@ class Component {
     }
 }
 
-function handleNarration() {
+async function handleNarration() {
     const component = new Component();
 
-    const currentContent = document.getElementById('editor-page').innerHTML;
-    document.getElementById('editor-page').innerHTML = currentContent + component.getNarrationComponent();
+    const { value: text } = await Swal.fire({
+        input: 'textarea',
+        inputLabel: 'Insira a narração',
+        inputPlaceholder: 'Digite o texto aqui...',
+        inputAttributes: {
+            'aria-label': 'Digite o texto aqui'
+        },
+        showCancelButton: true
+    })
+
+    if (text) {
+        const currentContent = document.getElementById('editor-page').innerHTML;
+        document.getElementById('editor-page').innerHTML = currentContent + component.getNarrationComponent(text);
+    }
 }
 
-function handleComment() {
+async function handleComment() {
     const component = new Component();
 
-    const currentContent = document.getElementById('editor-page').innerHTML;
-    document.getElementById('editor-page').innerHTML = currentContent + component.getCommentsComponent();
+    const { value: comment } = await Swal.fire({
+        input: 'textarea',
+        inputLabel: 'Insira um comentário',
+        inputPlaceholder: 'Digite o comentário...',
+        inputAttributes: {
+            'aria-label': 'Digite o comentário'
+        },
+        showCancelButton: true
+    })
+
+    if (comment) {
+        const currentContent = document.getElementById('editor-page').innerHTML;
+        document.getElementById('editor-page').innerHTML = currentContent + component.getCommentsComponent(comment);
+    }
 }
 
-function handleScene() {
+async function handleScene() {
     const component = new Component();
 
-    const currentContent = document.getElementById('editor-page').innerHTML;
-    document.getElementById('editor-page').innerHTML = currentContent + component.getSceneComponent();
+    const { value: number } = await Swal.fire({
+        input: 'text',
+        inputLabel: 'Insira o número da cena',
+        inputPlaceholder: 'Número da cena...',
+        inputAttributes: {
+            'aria-label': 'Número da cena'
+        },
+        showCancelButton: true
+    });
+
+    if (number) {
+        const { value: title } = await Swal.fire({
+            input: 'text',
+            inputLabel: 'Insira o título da cena',
+            inputPlaceholder: 'Insira o título da cena...',
+            inputAttributes: {
+                'aria-label': 'Insira o título da cena'
+            },
+            showCancelButton: true
+        })
+
+        if (title) {
+            const currentContent = document.getElementById('editor-page').innerHTML;
+            document.getElementById('editor-page').innerHTML = currentContent + component.getSceneComponent(number, title);
+        }
+    }
+
 }
 
-function handleEffects() {
+async function handleEffects() {
     const component = new Component();
 
     const currentContent = document.getElementById('editor-page').innerHTML;
     document.getElementById('editor-page').innerHTML = currentContent + component.getEffectsComponent();
 }
 
-function handleDialogues() {
+async function handleDialogues() {
     const component = new Component();
 
     const currentContent = document.getElementById('editor-page').innerHTML;
     document.getElementById('editor-page').innerHTML = currentContent + component.getDialogueComponent();
 }
 
-function handleContext() {
+async function handleContext() {
     const component = new Component();
 
     const currentContent = document.getElementById('editor-page').innerHTML;
