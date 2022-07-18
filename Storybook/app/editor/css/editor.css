@@ -1,5 +1,5 @@
 .editor-page {
-    font-family: 'Courier Prime', monospace !important;
+    font-family: 'Courier Prime', monospace;
     background-color: white;
     color: rgba(0, 0, 0, 0.808);
     padding: 20px;
@@ -12,6 +12,6 @@
 .editor-container {
     min-width: 75%;
     max-width: 75%;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
 }

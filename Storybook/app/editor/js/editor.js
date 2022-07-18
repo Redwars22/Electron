@@ -49,7 +49,7 @@ file.retrieveFile();
 
 setInterval(()=>{
     file.saveFile();
-}, 5000)
+}, 1500)
 
 function handleOpenAboutModal(){
     swal.fire({

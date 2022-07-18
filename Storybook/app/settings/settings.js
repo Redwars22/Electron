@@ -1,26 +1,25 @@
-function handleGoBack(){
+function handleGoBack() {
     window.location.replace('../editor/editor.html')
 }
 
-function handleChangeSettings(){
+function handleChangeSettings() {
     const theme = document.querySelector('#theme-selector').value;
     localStorage.setItem('theme', theme);
-    setTimeout(()=>{
+    setTimeout(() => {
         window.location.replace('../editor/editor.html')
-    }, 1000);
+    }, 500);
 }
 
-function handleDeleteEverything(){
+function handleDeleteEverything() {
     swal.fire({
         title: 'Espera aí!',
-        text: 'Tem certeza de que deseja deletar todo o conteúdo? OBS: É irreversível!',
+        text: 'Tem certeza de que deseja deletar todo o conteúdo, incluindo rascunhos salvos e configurações? OBS: É irreversível!',
         icon: 'warning',
         confirmButtonText: 'Sim, deletar!',
         showCancelButton: true,
         cancelButtonText: 'Não, cancelar!',
-    }).then((result)=> {
-        if(result.isConfirmed)
-        swal.fire({title: 'deletou', icon: 'warning'});
-        else swal.fire({title: 'não deletou', icon: 'warning'});
+    }).then((result) => {
+        if (result.isConfirmed) localStorage.clear();
+
     });
 }

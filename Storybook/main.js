@@ -8,14 +8,14 @@ const createWindow = () => {
         height: 600,
         title: "Storybook ALPHA",
         frame: true,
-	icon: 'icon.png'
+	    icon: 'icon.png'
     });
 
-    //win.loadFile('index.html');
-    //win.removeMenu();
-    //setTimeout(()=>{
+    win.loadFile('index.html');
+    win.removeMenu();
+    setTimeout(()=>{
         win.loadFile('./app/editor/editor.html');
-    //}, 5000);
+    }, 8000);
 }
 
 app.whenReady().then(() => {
