@@ -21,8 +21,8 @@ class Component {
         return "<div class='context-container'><u>29 DE FEVEREIRO DE 2022, COLÉGIO REGENTE, ÀS 22:15<u/></div>"
     }
 
-    getDialogueComponent() {
-        return "<div class='dialogue-container'><strong>PERSONAGEM: </strong> fala do personagem!</div>"
+    getDialogueComponent(character, dialogue) {
+        return `<div class='dialogue-container'><strong>${character.toUpperCase()}: </strong> ${dialogue}</div>`
     }
 }
 
@@ -93,7 +93,6 @@ async function handleScene() {
             document.getElementById('editor-page').innerHTML = currentContent + component.getSceneComponent(number, title);
         }
     }
-
 }
 
 async function handleEffects() {
@@ -106,8 +105,33 @@ async function handleEffects() {
 async function handleDialogues() {
     const component = new Component();
 
-    const currentContent = document.getElementById('editor-page').innerHTML;
-    document.getElementById('editor-page').innerHTML = currentContent + component.getDialogueComponent();
+    const { value: character } = await Swal.fire({
+        input: 'text',
+        inputLabel: 'Insira o nome do personagem',
+        inputPlaceholder: 'Insira o nome do personagem...',
+        inputAttributes: {
+            'aria-label': 'Insira o nome do personagem'
+        },
+        showCancelButton: true
+    });
+
+    if (character) {
+        const { value: dialogue } = await Swal.fire({
+            input: 'textarea',
+            inputLabel: 'Insira a fala do personagem',
+            inputPlaceholder: 'Insira a fala do personagem...',
+            inputAttributes: {
+                'aria-label': 'Insira a fala do personagem'
+            },
+            showCancelButton: true
+        })
+
+        if (dialogue) {
+            const currentContent = document.getElementById('editor-page').innerHTML;
+            document.getElementById('editor-page').innerHTML = currentContent + component.getDialogueComponent(character, dialogue);
+        }
+    }
+
 }
 
 async function handleContext() {
