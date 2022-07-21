@@ -1,5 +1,4 @@
 class Component {
-
     getNarrationComponent(text) {
         return `</br><div class='narration-container'><p>📣️ <em>${text}</em></p></div></br>`
     }
@@ -17,8 +16,8 @@ class Component {
             "<p>🏃‍♂️ <u>????</u></p></div></br>"
     }
 
-    getContextComponent() {
-        return "<div class='context-container'><u>29 DE FEVEREIRO DE 2022, COLÉGIO REGENTE, ÀS 22:15<u/></div>"
+    getContextComponent(date, place, time) {
+        return `<div class='context-container'><u>📅️ ${date.toUpperCase()}, 🗺️ ${place.toUpperCase()}, ℹ️ ${time.toUpperCase()}<u/></div>`
     }
 
     getDialogueComponent(character, dialogue) {
@@ -137,6 +136,44 @@ async function handleDialogues() {
 async function handleContext() {
     const component = new Component();
 
+    const { value: date } = await Swal.fire({
+        input: 'text',
+        inputLabel: 'Insira a data',
+        inputPlaceholder: 'Data...',
+        inputAttributes: {
+            'aria-label': 'Data'
+        },
+        showCancelButton: true
+    });
+
+    if (date) {
+        const { value: place } = await Swal.fire({
+            input: 'text',
+            inputLabel: 'Insira o lugar',
+            inputPlaceholder: 'Insira o lugar...',
+            inputAttributes: {
+                'aria-label': 'Insira o lugar'
+            },
+            showCancelButton: true
+        })
+
+        if (place) {
+            const { value: time } = await Swal.fire({
+                input: 'text',
+                inputLabel: 'Insira a hora',
+                inputPlaceholder: 'Insira a hora...',
+                inputAttributes: {
+                    'aria-label': 'Insira a hora'
+                },
+                showCancelButton: true
+            });
+
+            if (time) {
+                const currentContent = document.getElementById('editor-page').innerHTML;
+                document.getElementById('editor-page').innerHTML = currentContent + component.getContextComponent(date, place, time);
+            }
+        }
+    }
     const currentContent = document.getElementById('editor-page').innerHTML;
     document.getElementById('editor-page').innerHTML = currentContent + component.getContextComponent();
 }
