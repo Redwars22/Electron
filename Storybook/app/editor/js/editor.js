@@ -70,7 +70,11 @@ setInterval(() => {
 function handleOpenAboutModal() {
     swal.fire({
         icon: 'info',
-        title: 'Storybook ALPHA 2022',
+        title: 'Storybook BETA 2022',
         text: 'Desenvolvido por André Pereira(@Redwars22) para a disciplina de Modelagem de Software'
     });
+}
+
+function handleChangeTitle(){
+    window.title = "NANANANNANANANA";
 }

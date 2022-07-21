@@ -6,7 +6,6 @@ const createWindow = () => {
     const win = new BrowserWindow({
         width: 1000,
         height: 600,
-        title: "Storybook ALPHA",
         frame: true,
 	    icon: 'icon.png'
     });
