@@ -1,3 +1,5 @@
+// @ts-check
+
 class Component {
     getNarrationComponent(text) {
         return `</br><div class='narration-container'><p>📣️ <em>${text}</em></p></div></br>`
@@ -8,12 +10,11 @@ class Component {
     }
 
     getSceneComponent(number, title) {
-        return `<div class='scene-container'><p>🎬 CENA ${number} - ${title}</p></div></br>`
+        return `<div class='scene-container'><p>🎬 CENA ${number} - ${title.toUpperCase()}</p></div></br>`
     }
 
-    getEffectsComponent() {
-        return "<div class='effects-container'>" +
-            "<p>🏃‍♂️ <u>????</u></p></div></br>"
+    getEffectsComponent(description) {
+        return `<div class='effects-container'><p>🏃‍♂️ <u>${description.toUpperCase()}</u></p></div></br>`
     }
 
     getContextComponent(date, place, time) {
@@ -97,8 +98,20 @@ async function handleScene() {
 async function handleEffects() {
     const component = new Component();
 
-    const currentContent = document.getElementById('editor-page').innerHTML;
-    document.getElementById('editor-page').innerHTML = currentContent + component.getEffectsComponent();
+    const { value: description } = await Swal.fire({
+        input: 'text',
+        inputLabel: 'Insira uma ação, transição, mudanças climáticas, etc.',
+        inputPlaceholder: 'Ex: João corre em direção a Maria, O tempo começou a ficar estranho...',
+        inputAttributes: {
+            'aria-label': ''
+        },
+        showCancelButton: true
+    });
+
+    if (description) {
+        const currentContent = document.getElementById('editor-page').innerHTML;
+        document.getElementById('editor-page').innerHTML = currentContent + component.getEffectsComponent(description);
+    }
 }
 
 async function handleDialogues() {

@@ -39,7 +39,7 @@
                 <p>Configurações</p>
             </div> -->
             <div class="button-container">
-                <button class="menu-button" onclick="">
+                <button class="menu-button" onclick="handleSetTheme()">
                     <i class="bi bi-palette"></i>
                 </button>
                 <p>Tema</p>
@@ -115,7 +115,7 @@
                 <p>Brainstorm</p>
             </div>
             <div class="button-container">
-                <button class="menu-button" onclick="swal.fire({title: 'Não implementado', icon: 'error'})">
+                <button class="menu-button" onclick="handleNavigate('random')">
                     <i class="bi bi-dice-5"></i>
                 </button>
                 <p>Aleatório</p>
@@ -181,7 +181,7 @@
     </div>
     <script src="js/editor.js"></script>
     <script src="js/navigate.js"></script>
-    <script src="js/getSettings.js"></script>
+    <script src="js/theme.js"></script>
     <script src="js/components.js"></script>
     <script src="js/fonts.js"></script>
 </body>
