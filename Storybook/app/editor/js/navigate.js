@@ -5,8 +5,8 @@ function handleNavigate(path){
     if(path == 'brainstorm')
         window.location.replace('../brainstorm/brainstorm.html');
 
-    // if(path == '')
-    //     window.location.replace('');
+    if(path == 'random')
+         window.location.replace('../random/random.html');
 
     // if(path == '')
     //     window.location.replace('');

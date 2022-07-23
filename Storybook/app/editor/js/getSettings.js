@@ -1,4 +1,4 @@
-window.onload = () => {
+/* window.onload = () => {
     const theme = localStorage.getItem('theme');
 
     if (theme == 'light') {
@@ -32,4 +32,4 @@ window.onload = () => {
     if (localStorage.getItem('font') !== null) {
         document.getElementById('editor-page').style.fontFamily = localStorage.getItem('font');
     }
-};
+}; */
