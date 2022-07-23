@@ -1,4 +1,4 @@
-window.onload = () => {
+/* window.onload = () => {
     const theme = localStorage.getItem('theme');
 
     if (theme == 'light') {
@@ -9,7 +9,13 @@ window.onload = () => {
         document.querySelector('body').style['background-color'] = '#001d25';
         document.querySelector('body').style['color'] = 'white';
         document.querySelector('.button-group').style['color'] = '#fff';
-    } else if (theme == "red") {
+    }  else if (theme == "ultra-dark") {
+        document.querySelector('body').style['background-color'] = '#050505';
+        document.querySelector('body').style['color'] = 'white';
+        document.querySelector('.button-group').style['color'] = '#fff';
+    }
+    
+    else if (theme == "red") {
         document.querySelector('body').style['background-color'] = '#eb4034';
         document.querySelector('body').style['color'] = '#fff';
         document.querySelector('.menu-button').style['background-color'] = "#ad1d4c";
@@ -26,4 +32,4 @@ window.onload = () => {
     if (localStorage.getItem('font') !== null) {
         document.getElementById('editor-page').style.fontFamily = localStorage.getItem('font');
     }
-};
+}; */

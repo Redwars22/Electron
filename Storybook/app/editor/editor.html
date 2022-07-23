@@ -32,11 +32,23 @@
 <body>
     <nav>
         <div class="button-group">
-            <div class="button-container">
+<!--             <div class="button-container">
                 <button class="menu-button" onclick="handleNavigate('settings')">
                     <i class="bi bi-gear-wide-connected"></i>
                 </button>
                 <p>Configurações</p>
+            </div> -->
+            <div class="button-container">
+                <button class="menu-button" onclick="handleSetTheme()">
+                    <i class="bi bi-palette"></i>
+                </button>
+                <p>Tema</p>
+            </div>
+            <div class="button-container">
+                <button class="menu-button" onclick="file.handleDeleteEverything()">
+                    <i class="bi bi-trash"></i>
+                </button>
+                <p>Deletar</p>
             </div>
             <div class="button-container">
                 <button class="menu-button" onclick="handleOpenAboutModal()">
@@ -103,7 +115,7 @@
                 <p>Brainstorm</p>
             </div>
             <div class="button-container">
-                <button class="menu-button" onclick="swal.fire({title: 'Não implementado', icon: 'error'})">
+                <button class="menu-button" onclick="handleNavigate('random')">
                     <i class="bi bi-dice-5"></i>
                 </button>
                 <p>Aleatório</p>
@@ -155,7 +167,7 @@
                 <legend>Título do documento</legend>
                 <div class="input-container">
                     <input class="form-control" type="text" name="" id="" />
-                    <button class="btn btn-success">APLICAR</button>
+                    <button class="btn btn-success" onclick="handleChangeTitle()">APLICAR</button>
                 </div>
             </fieldset>
             <fieldset>
@@ -169,7 +181,7 @@
     </div>
     <script src="js/editor.js"></script>
     <script src="js/navigate.js"></script>
-    <script src="js/getSettings.js"></script>
+    <script src="js/theme.js"></script>
     <script src="js/components.js"></script>
     <script src="js/fonts.js"></script>
 </body>
