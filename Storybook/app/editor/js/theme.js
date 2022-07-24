@@ -1,19 +1,28 @@
 class Theme {
-    async setTheme(){
+    async setTheme() {
         const { value: theme } = await Swal.fire({
-            input: 'text',
-            inputLabel: '',
-            inputPlaceholder: '',
-            inputAttributes: {
-                'aria-label': ''
+            title: 'Selecione um tema',
+            input: 'select',
+            inputOptions: {
+                'light': 'Claro',
+                'dark': 'Escuro',
+                'ultra-dark': 'Ultra Escuro',
+                'blue': 'Azul',
+                'red': 'Vermelho'
             },
-            showCancelButton: true
+            inputPlaceholder: 'Selecione um tema',
+            showCancelButton: true,
         });
 
-        if(theme){}
+        if (theme) {
+            localStorage.setItem('theme', theme);
+            setTimeout(() => {
+                window.location.reload()
+            });
+        }
     }
 
-    getTheme(){
+    getTheme() {
         const theme = localStorage.getItem('theme');
 
         if (theme == 'light') {
@@ -24,12 +33,12 @@ class Theme {
             document.querySelector('body').style['background-color'] = '#001d25';
             document.querySelector('body').style['color'] = 'white';
             document.querySelector('.button-group').style['color'] = '#fff';
-        }  else if (theme == "ultra-dark") {
+        } else if (theme == "ultra-dark") {
             document.querySelector('body').style['background-color'] = '#050505';
             document.querySelector('body').style['color'] = 'white';
             document.querySelector('.button-group').style['color'] = '#fff';
         }
-        
+
         else if (theme == "red") {
             document.querySelector('body').style['background-color'] = '#eb4034';
             document.querySelector('body').style['color'] = '#fff';
@@ -43,7 +52,7 @@ class Theme {
             document.querySelector('body').style['color'] = 'white';
             document.querySelector('.button-group').style['color'] = '#fff';
         }
-    
+
         if (localStorage.getItem('font') !== null) {
             document.getElementById('editor-page').style.fontFamily = localStorage.getItem('font');
         }
@@ -55,16 +64,7 @@ window.onload = () => {
     theme.getTheme();
 }
 
-function handleSetTheme(){
+function handleSetTheme() {
     const theme = new Theme();
     theme.setTheme();
 }
-/*
-function handleChangeSettings() {
-    const theme = document.querySelector('#theme-selector').value;
-    localStorage.setItem('theme', theme);
-    setTimeout(() => {
-        window.location.replace('../editor/editor.html')
-    }, 500);
-}
-*/

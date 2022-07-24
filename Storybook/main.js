@@ -11,7 +11,7 @@ const createWindow = () => {
     });
 
     win.loadFile('index.html');
-    //win.removeMenu();
+    win.removeMenu();
     setTimeout(()=>{
         win.loadFile('./app/editor/editor.html');
     }, 8000);
