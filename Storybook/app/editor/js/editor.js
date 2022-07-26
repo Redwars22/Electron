@@ -7,7 +7,8 @@ class Text {
         "Roboto",
         "Edu NSW ACT Foundation",
         "Grand Hotel",
-        "Chakra Petch"
+        "Chakra Petch",
+        "Cormorant SC"
     ];
     
     setFontFamily(id){
