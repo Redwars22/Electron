@@ -3,7 +3,8 @@ const fonts = [
     "Roboto",
     "Edu NSW ACT Foundation",
     "Grand Hotel",
-    "Chakra Petch"
+    "Chakra Petch",
+    "Cormorant SC"
 ];
 
 function handleChangeFont(id){
