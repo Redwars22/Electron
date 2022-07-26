@@ -1,8 +1,19 @@
-class TextFormat {
+class Text {
     textEditor = document.getElementById('editor-page');
-
     fontSize = 12;
     foreground = "#fff";
+    fonts = [
+        "Courier Prime",
+        "Roboto",
+        "Edu NSW ACT Foundation",
+        "Grand Hotel",
+        "Chakra Petch"
+    ];
+    
+    setFontFamily(id){
+        document.getElementById('editor-page').style.fontFamily = this.fonts[id];
+        localStorage.setItem('font', this.fonts[id]);
+    }
 
     setFontSize(size) {
         this.fontSize = size.toString() + 'px';
@@ -48,7 +59,7 @@ class File {
     }
 }
 
-const text = new TextFormat();
+const text = new Text();
 const file = new File();
 
 function handleChangeFontSize() {
@@ -77,4 +88,8 @@ function handleOpenAboutModal() {
 
 function handleChangeTitle(){
     window.title = "NANANANNANANANA";
+}
+
+function handleChangeFont(id){
+    text.setFontFamily(id);
 }
