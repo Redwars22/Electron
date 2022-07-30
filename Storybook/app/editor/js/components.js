@@ -24,6 +24,10 @@ class Component {
     getDialogueComponent(character, dialogue) {
         return `<div class='dialogue-container'><strong>${character.toUpperCase()}: </strong> ${dialogue}</div>`
     }
+
+    getMediaComponent(code){
+        return `<div class="media-container"><strong><i class="bi bi-collection-play-fill"></i>Mídia<strong><div class="media-content">${code}</div></div>`;
+    }
 }
 
 async function handleNarration() {
@@ -187,6 +191,23 @@ async function handleContext() {
             }
         }
     }
-    const currentContent = document.getElementById('editor-page').innerHTML;
-    document.getElementById('editor-page').innerHTML = currentContent + component.getContextComponent();
+}
+
+async function handleMedia(){
+    const component = new Component();
+
+    const { value: code } = await Swal.fire({
+        input: 'textarea',
+        inputLabel: 'Insira o código HTML do elemento que deseja inserir',
+        inputPlaceholder: 'Ex: playlist do Spotify, vídeo do YouTube etc.',
+        inputAttributes: {
+            'aria-label': ''
+        },
+        showCancelButton: true
+    })
+
+    if(code){
+        const currentContent = document.getElementById('editor-page').innerHTML;
+        document.getElementById('editor-page').innerHTML = currentContent + component.getMediaComponent(code);
+    }
 }

@@ -96,10 +96,10 @@
                 <p>Comentário</p>
             </div>
             <div class="button-container">
-                <button class="menu-button" onclick="swal.fire({title: 'Não implementado', icon: 'error'})">
-                    <i class="bi bi-image"></i>
+                <button class="menu-button" onclick="handleMedia()">
+                    <i class="bi bi-collection-play-fill"></i>
                 </button>
-                <p>Imagem</p>
+                <p>Mídia</p>
             </div>
             <div class="button-container">
                 <button class="menu-button" onclick="handleEffects()">
@@ -116,7 +116,7 @@
                 <p>Brainstorm</p>
             </div>
             <div class="button-container">
-                <button class="menu-button" onclick="handleNavigate('random')">
+                <button class="menu-button" onclick="handleNavigate('characters')">
                     <i class="bi bi-person-fill"></i>
                 </button>
                 <p>Personagens</p>
@@ -165,24 +165,10 @@
                 </button>
             </fieldset>
             <fieldset>
-                <legend>Título do documento</legend>
-                <div class="input-container">
-                    <input class="form-control" type="text" name="" id="" />
-                    <button class="btn btn-success" onclick="handleChangeTitle()">APLICAR</button>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Autor do documento</legend>
-                <div class="input-container">
-                    <input class="form-control" type="text" name="" id="" />
-                    <button class="btn btn-success">APLICAR</button>
-                </div>
-            </fieldset>
-            <fieldset>
                 <legend>Alinhamento do Texto</legend>
-                <button class="btn btn-lg btn-outline-secondary"><i class="bi bi-text-left"></i></button>
-                <button class="btn btn-lg btn-outline-secondary"><i class="bi bi-text-center"></i></button>
-                <button class="btn btn-lg btn-outline-secondary"><i class="bi bi-text-right"></i></button>
+                <button class="btn btn-lg btn-outline-secondary" onclick="handleTextAlign('left')"><i class="bi bi-text-left"></i></button>
+                <button class="btn btn-lg btn-outline-secondary" onclick="handleTextAlign('center')"><i class="bi bi-text-center"></i></button>
+                <button class="btn btn-lg btn-outline-secondary" onclick="handleTextAlign('right')"><i class="bi bi-text-right"></i></button>
             </fieldset>
         </div>
     </div>

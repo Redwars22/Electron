@@ -11,6 +11,7 @@
     padding-left: 5px;
     padding-right: 5px;
     font-size: 15px;
+    transition: margin-top 600ms;
 }
 
 .menu-button {
@@ -21,4 +22,9 @@
     background-color: #022e29;
     border: 1px solid rgb(71, 71, 71);
     border-radius: 10px;
+
+}
+
+.button-container:hover {
+    margin-top: -8px;
 }

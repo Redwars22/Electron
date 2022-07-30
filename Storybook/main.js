@@ -7,7 +7,7 @@ const createWindow = () => {
         width: 1000,
         height: 600,
         frame: true,
-	    icon: 'icon.png'
+	    icon: 'icon.png',
     });
 
     win.loadFile('index.html');

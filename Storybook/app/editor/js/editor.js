@@ -10,6 +10,7 @@ class Text {
         "Chakra Petch",
         "Cormorant SC"
     ];
+    textAlign;
     
     setFontFamily(id){
         document.getElementById('editor-page').style.fontFamily = this.fonts[id];
@@ -25,6 +26,11 @@ class Text {
         this.foreground = color;
         document.getElementById('editor-page').style['color'] = this.foreground;
     }
+
+    setTextAlign(position){
+        this.textAlign = position;
+        document.getElementById('editor-page').style['text-align'] = this.textAlign;
+    }
 }
 
 class File {
@@ -36,11 +42,6 @@ class File {
     retrieveFile() {
         const content = localStorage.getItem("data");
         document.querySelector("#editor-page").innerHTML = content;
-    }
-
-    setDocumentTitle() {
-        const title = document.querySelector("#doc-title-field").value;
-        localStorage.setItem("doc-title", title);
     }
 
     handleDeleteEverything() {
@@ -82,15 +83,15 @@ setInterval(() => {
 function handleOpenAboutModal() {
     swal.fire({
         icon: 'info',
-        title: 'Storybook BETA 2022',
+        title: 'Storybook RELEASE CANDIDATE 2022',
         text: 'Desenvolvido por André Pereira(@Redwars22) para a disciplina de Modelagem de Software'
     });
 }
 
-function handleChangeTitle(){
-    window.title = "NANANANNANANANA";
-}
-
 function handleChangeFont(id){
     text.setFontFamily(id);
+}
+
+function handleTextAlign(position){
+    text.setTextAlign(position);
 }
