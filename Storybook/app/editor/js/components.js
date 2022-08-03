@@ -28,6 +28,10 @@ class Component {
     getMediaComponent(code){
         return `<div class="media-container"><strong><i class="bi bi-collection-play-fill"></i>Mídia<strong><div class="media-content">${code}</div></div>`;
     }
+
+    getChapterComponent(title){
+        return `<h1>${title}</h1>`;
+    }
 }
 
 async function handleNarration() {
@@ -209,5 +213,21 @@ async function handleMedia(){
     if(code){
         const currentContent = document.getElementById('editor-page').innerHTML;
         document.getElementById('editor-page').innerHTML = currentContent + component.getMediaComponent(code);
+    }
+}
+
+async function handleChapter(){
+    const component = new Component();
+
+    const {value: title} = await Swal.fire({
+        input: 'text',
+        inputLabel: 'Insira o título do capítulo',
+        inputPlaceholder: 'CAPÍTULO 1',
+        showCancelButton: true
+    });
+
+    if(title){
+        const currentContent = document.getElementById('editor-page').innerHTML;
+        document.getElementById('editor-page').innerHTML = currentContent + component.getChapterComponent(title);
     }
 }
