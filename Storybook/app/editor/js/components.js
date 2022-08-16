@@ -18,7 +18,7 @@ class Component {
     }
 
     getContextComponent(date, place, time) {
-        return `<div class='context-container'><u>📅️ ${date.toUpperCase()}, 🗺️ ${place.toUpperCase()}, ℹ️ ${time.toUpperCase()}<u/></div>`
+        return `<div class='context-container'>📅️ ${date.toUpperCase()}, 🗺️ ${place.toUpperCase()}, ℹ️ ${time.toUpperCase()}</div>`
     }
 
     getDialogueComponent(character, dialogue) {
@@ -30,7 +30,7 @@ class Component {
     }
 
     getChapterComponent(title){
-        return `<h1>${title}</h1>`;
+        return `<h4>${title}</h4>`;
     }
 }
 

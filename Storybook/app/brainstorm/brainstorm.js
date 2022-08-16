@@ -7,9 +7,11 @@ window.onload = () => {
         document.getElementById("brainstorm-editor").innerText =
             localStorage.getItem("brainstorm");
     }
+
+    setInterval(() => {
+        const content = document.getElementById("brainstorm-editor").innerText;
+        localStorage.setItem("brainstorm", content);
+    }, 1500);
+    
 };
 
-setInterval(() => {
-    const content = document.getElementById("brainstorm-editor").innerText;
-    localStorage.setItem("brainstorm", content);
-}, 1500);

@@ -3,76 +3,62 @@
 class Character {
     name;
     personalityArray = [
-    'ESTJ',
-    'ENTJ',
-    'ESFJ',
-    'ENFJ',
-    'ISTJ',
-    'INFJ',
-    'INTJ',
-    'INFJ',
-    'ESTP',
-    'ESFP',
-    'ENTP',
-    'ENFP',
-    'ISTP',
-    'ISFP',
-    'INTP',
-    'INFP',
+        'ESTJ',
+        'ENTJ',
+        'ESFJ',
+        'ENFJ',
+        'ISTJ',
+        'INFJ',
+        'INTJ',
+        'INFJ',
+        'ESTP',
+        'ESFP',
+        'ENTP',
+        'ENFP',
+        'ISTP',
+        'ISFP',
+        'INTP',
+        'INFP',
     ];
     bloodTypesArray = ['A+', 'A-', 'B+', 'B-', 'AB', 'O+', 'O-'];
     monthsArray = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
     ]
 
-    getAge(){
+    getAge() {
         const randomAge = Math.floor(Math.random() * (100 + 1));
         return (randomAge == 0 ? 1 : randomAge);
     }
 
-    getRandomValue(min, max){
+    getRandomValue(min, max) {
         const value = Math.random() * (max + 1);
         return (value < min ? value + 1.0 : value).toFixed(2);
     }
 
-    getBloodType(){
+    getBloodType() {
         return this.bloodTypesArray[Math.floor(Math.random() * this.bloodTypesArray.length)];
     }
 
-    getBirthMonth(){
+    getBirthMonth() {
         return this.monthsArray[Math.floor(Math.random() * this.monthsArray.length)];
     }
 
-    getBirthPlace(){
+    getBirthPlace() {
         return null;
     }
 
-    getPersonality(){
+    getPersonality() {
         return this.personalityArray[Math.floor(Math.random() * this.personalityArray.length)];
     }
 
-    getCharacterInfo(){
-        /*return {
-            age: this.getAge(),
-            bloodType: this.getBloodType(),
-            personality: this.getPersonality(),
-            height: this.getRandomValue(1.25, 2.10),
-            weight: this.getRandomValue(48.0, 123.0),
-            birthMonth: this.getBirthMonth(),
-            birthPlace: this.getBirthPlace()
-        }*/
-
+    getCharacterInfo() {
         const personalInfo = `IDADE: ${this.getAge()} \nTIPO SANGUÍNEO: ${this.getBloodType()} \nPERSONALIDADE: ${this.getPersonality()}`
         const size = `\nALTURA: ${this.getRandomValue(1.25, 2.10)} \nPESO: ${this.getRandomValue(48.0, 123.0)}`;
-        const birthInfo = `\nMÊS DE NASCIMENTO: ${this.getBirthMonth()}\nCONTINENTE EM QUE NASCEU: `
+        const birthInfo = `\nMÊS DE NASCIMENTO: ${this.getBirthMonth()}`
         return personalInfo + size + birthInfo;
     }
 
-    generateCharacter(){}
-
-    async getRandomCharacter(){
-        this.generateCharacter();
-
+    async getRandomCharacter() {
         const { value: name } = await Swal.fire({
             input: 'text',
             inputLabel: 'Insira o nome do personagem',
@@ -83,7 +69,7 @@ class Character {
             showCancelButton: true,
         })
 
-        if(name){
+        if (name) {
             this.name = name;
             const character = this.getCharacterInfo();
             Swal.fire({
@@ -92,16 +78,19 @@ class Character {
                 confirmButtonText: 'Adicionar à lista',
                 showCancelButton: true,
                 cancelButtonText: 'Cancelar'
-            }).then((result)=> {
-                if(result.isConfirmed){
-                    document.querySelector('.characters-list').innerHTML += `<div class="character-container" contenteditable><h1 class="character-name">${this.name}</h1>${character}</div>`;
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    if (localStorage.getItem("characters") === null) {
+                        document.querySelector('.characters-list').innerHTML = `<div class="character-container" contenteditable><h1 class="character-name">${this.name}</h1>${character}</div>`;
+                    } else
+                        document.querySelector('.characters-list').innerHTML += `<div class="character-container" contenteditable><h1 class="character-name">${this.name}</h1>${character}</div>`;
                 }
             });
         }
     }
 
-    getCharacters(){
-        if(localStorage.getItem('characters') !== null){
+    getCharacters() {
+        if (localStorage.getItem('characters') !== null) {
             document.getElementById('characters-list').innerHTML = "";
             document.getElementById('characters-list').innerHTML = localStorage.getItem('characters');
             return;
@@ -110,27 +99,27 @@ class Character {
         document.getElementById('characters-list').innerHTML = "<h3>⚠️ NÃO HÁ NADA AQUI!</h3><br/><span>Comece adicionando personagens para salvá-los aqui.</span>";
     }
 
-    deleteAllCharacters(){
+    deleteAllCharacters() {
         localStorage.removeItem('characters');
         window.location.reload();
     }
 
-    saveAllCharacters(){
+    saveAllCharacters() {
         try {
             const list = document.getElementById('characters-list').innerHTML;
             localStorage.setItem('characters', list);
 
             Swal.fire({
-              title: 'Salvando personagens!',
-              timer: 1000,
-              timerProgressBar: true,
-              didOpen: () => {
-                Swal.showLoading();
-            }
+                title: 'Salvando personagens!',
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
             }).then((result) => {
-              if (result.dismiss === Swal.DismissReason.timer) {
-                console.log('I was closed by the timer')
-              }
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                }
             })
 
         } catch (err) {
@@ -141,19 +130,19 @@ class Character {
 
 const character = new Character();
 
-function handleNewCharacter(){
+function handleNewCharacter() {
     character.getRandomCharacter();
 }
 
-function handleDeleteCharacters(){
+function handleDeleteCharacters() {
     character.deleteAllCharacters();
 }
 
-function handleSaveCharacters(){
+function handleSaveCharacters() {
     character.saveAllCharacters();
 }
 
-function handleGoBack(){
+function handleGoBack() {
     window.location.replace("../editor/editor.html");
 }
 
