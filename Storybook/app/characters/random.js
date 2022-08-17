@@ -43,10 +43,6 @@ class Character {
         return this.monthsArray[Math.floor(Math.random() * this.monthsArray.length)];
     }
 
-    getBirthPlace() {
-        return null;
-    }
-
     getPersonality() {
         return this.personalityArray[Math.floor(Math.random() * this.personalityArray.length)];
     }
@@ -100,8 +96,25 @@ class Character {
     }
 
     deleteAllCharacters() {
-        localStorage.removeItem('characters');
-        window.location.reload();
+        Swal.fire({
+          text: 'TEM CERTEZA DO QUE ESTÁ FAZENDO?!',
+          title: 'Ao clicar em SIM, todos os personagens serão deletados. Deseja continuar?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'SIM!!!',
+          cancelButtonText: 'NÃO'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            console.log('apagou tudo!');
+            localStorage.removeItem('characters');
+            window.location.reload();
+          } else {
+            Swal.fire({
+                text: 'Não se preocupe, seus dados estão intactos!',
+                icon: 'info'
+            })
+          }
+        });
     }
 
     saveAllCharacters() {

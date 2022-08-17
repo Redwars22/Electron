@@ -8,7 +8,8 @@ class Theme {
                 'dark': 'Escuro',
                 'ultra-dark': 'Ultra Escuro',
                 'blue': 'Azul',
-                'red': 'Vermelho'
+                'red': 'Vermelho',
+                'sublime': 'Sublime'
             },
             inputPlaceholder: 'Selecione um tema',
             showCancelButton: true,
@@ -34,6 +35,10 @@ class Theme {
         } else if (theme == "ultra-dark") {
             document.querySelector('body').style['background-color'] = '#050505';
             document.querySelector('body').style['color'] = 'white';
+        }
+        else if (theme == "sublime") {
+            document.querySelector('body').style['background-color'] = '#343d46';
+            document.querySelector('body').style['color'] = '#fff';
         }
 
         else if (theme == "red") {
